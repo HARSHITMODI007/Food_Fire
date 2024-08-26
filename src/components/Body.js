@@ -3,6 +3,7 @@ import reslist from "../Utils/mackdata";
 import {useState,useEffect} from "react"
 import Shimmer from "./shimmer";
 import {Link} from "react-router-dom"
+import {PROXY_RES_API} from "../Utils/constants";
 
 const Body = () => {
     // LOCAL STATE VARIABLE -Super powerful variable
@@ -14,7 +15,7 @@ const Body = () => {
 
     useEffect(() => {fetchData();},[])   
     const fetchData =async () => {
-        const data = await fetch('https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.9059311&lng=75.78443829999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
+        const data = await fetch(PROXY_RES_API);
         const json = await data.json();
        console.log(json)
        let selectedCards = json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants

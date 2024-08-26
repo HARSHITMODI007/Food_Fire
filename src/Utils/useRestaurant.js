@@ -1,5 +1,5 @@
 import {useState,useEffect} from "react";
-import { MENU_API } from "../Utils/constants";
+import { PROXY_MENU_API} from "../Utils/constants";
 
 const useRestaurant = () => {
     const [resinfo,setresinfo] = useState(null);
@@ -10,7 +10,7 @@ const useRestaurant = () => {
     },[])
     
     const fetchMenu = async () => {
-        const data = await fetch(MENU_API + resid);
+        const data = await fetch(PROXY_MENU_API + resid);
         const json = await data.json();
         console.log(json);
         setresinfo(json.data);

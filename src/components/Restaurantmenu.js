@@ -2,7 +2,7 @@ import {useState,useEffect} from "react";
 import Shimmer from "./shimmer";
 import Listitem from "./Listitem";
 import {useParams} from "react-router-dom"
-import { MENU_API } from "../Utils/constants";
+import { PROXY_MENU_API} from "../Utils/constants";
 import useRestaurant from "../Utils/useRestaurant";
 import RestaurantCategory from "./RestaurantCatgory";
 
@@ -19,7 +19,7 @@ const Restaurantmenu =() => {
     },[])
 
     const fetchMenu = async () => {
-        const data = await fetch(MENU_API + resid);
+        const data = await fetch(PROXY_MENU_API + resid);
         const json = await data.json();
         console.log(json);
         setresinfo(json.data);
